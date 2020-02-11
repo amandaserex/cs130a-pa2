@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <list> 
 #include "quash.h"
 
 using namespace std;
@@ -34,6 +35,52 @@ void quash::print(){
 
 
 int main(int argc, char* argv[]){
+	if(argc!=2){
+		cerr<<argv[0]<< " Expects two arguements"<<endl;
+	}
+	quash myQuash;
+	string command;
+	stringstream ss1;
+	ss1<< argv[1];
+	while(getline(ss1,command,',')){
+		int insert = 0;
+		int Delete= 0;
+		int lookup=0;
+		string thing;
+		stringstream ss2;
+		ss2<<command;
+		while(getline(ss2, thing, ' ')){
+			if(thing=="insert"){
+				insert++;
+			}
+			else if(thing=="Delete"){
+				Delete++;
+			}
+			else if(thing=="lookup"){
+				lookup++;
+			}
+			else if(thing=="deleteMin"){
+				myQuash.deleteMin();
+			}
+			else if(thing=="print"){
+				myQuash.print();
+			}
+			else{
+				if(insert>0){
+					myQuash.insert(stoi(thing));
+				}
+				else if(Delete>0){
+					myQuash.Delete(stoi(thing));
+				}
+				else if(lookup>0){
+					myQuash.lookup(stoi(thing));
+				}
+			}
+
+		}
+		
+
+	}
 
 	return 0;
 }
