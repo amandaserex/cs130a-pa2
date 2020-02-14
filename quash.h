@@ -1,18 +1,10 @@
 //quash.h
 #ifndef QUASH_H
 #define QUASH_H
-#include <list> 
-#include <bits/stdc++.h>
+#include "hash.h"
+#include <bits/stdc++.h> 
 using namespace std;
 
-class myComparator 
-{ 
-public: 
-    int operator() (const pair<int,int>& one, const pair<int,int>& two) 
-    { 
-        return one.first > two.first; 
-    } 
-}; 
 
 class quash{
 public:
@@ -22,8 +14,8 @@ public:
     void Delete(int key); //Use the hash table to determine where i is and decrement its count
     void print(); //Print out the heap contents
 private:
-    list<pair<int,int>> myHash[43];
-    priority_queue <pair<int,int>, vector<pair<int,int>>, myComparator> myHeap;
+    Hash myHash;
+    priority_queue<int, vector<int>, greater<int>> myHeap;
 };
 
 #endif

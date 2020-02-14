@@ -1,16 +1,28 @@
 //quash.cpp
 
-#include <iostream>
+#include "quash.h"
 #include <string>
 #include <sstream>
-#include <list> 
-#include "quash.h"
+
 
 using namespace std;
 
 void quash::insert(int key){
 	//“item successfully inserted, count = 1” or “item already present, new count =n”
-
+	int myHashKey;
+	if(key<0){
+		myHashKey = (key%43)+43;
+	}
+	else{
+		myHashKey = key%43;
+	}
+	if(!myHash.searchAndAdd(myHashKey)){
+		pair<int, int> temp;
+		temp.first=key;
+		temp.second=1; 
+		myHash.insertIt(temp, myHashKey);
+		myHeap.push(key);
+	}
 }
 
 void quash::lookup(int key){
@@ -45,7 +57,7 @@ int main(int argc, char* argv[]){
 	while(getline(ss1,command,',')){
 		int insert = 0;
 		int Delete= 0;
-		int lookup=0;
+		int lookUp=0;
 		string thing;
 		stringstream ss2;
 		ss2<<command;
@@ -57,7 +69,7 @@ int main(int argc, char* argv[]){
 				Delete++;
 			}
 			else if(thing=="lookup"){
-				lookup++;
+				lookUp++;
 			}
 			else if(thing=="deleteMin"){
 				myQuash.deleteMin();
@@ -72,7 +84,7 @@ int main(int argc, char* argv[]){
 				else if(Delete>0){
 					myQuash.Delete(stoi(thing));
 				}
-				else if(lookup>0){
+				else if(lookUp>0){
 					myQuash.lookup(stoi(thing));
 				}
 			}
