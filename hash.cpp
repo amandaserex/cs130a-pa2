@@ -3,14 +3,36 @@
 #include <iostream>
 using namespace std;
 
-bool Hash:searchAndAdd(int key){
-    for(int m = table[myHashKey].begin(); m!= table[myHashKey].end();m++){
-		if(m.first==key){
-			m.second++;
+bool Hash::searchAndAdd(int key){
+    for(std::vector<std::pair<int, int> >::iterator m = table[key].begin(); m!= table[key].end();m++){
+		if(m->first==key){
+			m->second++;
             return true;
         }
     }
     return false;
+}
+
+int Hash::currentCount(int key){
+    for(std::vector<std::pair<int, int> >::iterator m = table[key].begin(); m!= table[key].end();m++){
+		if(m->first==key){
+            return m->second;
+        }
+    }
+    return 0;
+}
+
+bool Hash::Delete(int key){
+    for(std::vector<std::pair<int, int> >::iterator m = table[key].begin(); m!= table[key].end();m++){
+		if(m->first==key){
+            m->second--;
+            if(m->second==0){
+                table[key].erase(m);
+                return true; //it has been deleted
+            }
+        }
+    }
+    return false; //just decreased
 }
 void Hash::insertIt(pair<int,int> newguy, int where){
     table[where].push_back(newguy);
@@ -18,8 +40,3 @@ void Hash::insertIt(pair<int,int> newguy, int where){
 
 }
 
-
-void Hash::Delete(int key){
-//decrease count if zero delete from has and heap
-
-}
