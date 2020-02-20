@@ -1,7 +1,7 @@
 #ifndef HASH_H
 #define HASH_H
 
-#include <vector>
+#include <list>
 using namespace std;
 
 class Hash{
@@ -11,7 +11,7 @@ public:
     bool searchAndAdd(int key);
     void insertIt(pair<int,int> newguy, int where);
     int currentCount(int key);
-    vector<pair<int,int>> table[43];
+    list<pair<int,int>> table[43];
 };
 
 #endif

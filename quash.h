@@ -3,6 +3,7 @@
 #define QUASH_H
 #include "hash.h"
 #include <bits/stdc++.h> 
+#include <list>
 using namespace std;
 
 

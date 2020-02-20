@@ -3,7 +3,7 @@
 #include "quash.h"
 #include <string>
 #include <sstream>
-
+#include <list>
 
 using namespace std;
 

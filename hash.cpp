@@ -1,5 +1,5 @@
 #include "hash.h"
-#include <vector>
+#include <list>
 #include <iostream>
 using namespace std;
 
@@ -11,7 +11,7 @@ bool Hash::searchAndAdd(int key){
 	else{
 		myHashKey = key%43;
 	}
-    for(std::vector<std::pair<int, int> >::iterator m = table[myHashKey].begin(); m!= table[myHashKey].end();m++){
+    for(std::list<std::pair<int, int> >::iterator m = table[myHashKey].begin(); m!= table[myHashKey].end();m++){
 		if(m->first==key){
 			m->second++;
             return true;
@@ -28,7 +28,7 @@ int Hash::currentCount(int key){
 	else{
 		myHashKey = key%43;
 	}
-    for(std::vector<std::pair<int, int> >::iterator m = table[myHashKey].begin(); m!= table[myHashKey].end();m++){
+    for(std::list<std::pair<int, int> >::iterator m = table[myHashKey].begin(); m!= table[myHashKey].end();m++){
 		if(m->first==key){
             return m->second;
         }
@@ -44,7 +44,7 @@ bool Hash::Delete(int key){
 	else{
 		myHashKey = key%43;
 	}
-    for(std::vector<std::pair<int, int> >::iterator m = table[myHashKey].begin(); m!= table[myHashKey].end();m++){
+    for(std::list<std::pair<int, int> >::iterator m = table[myHashKey].begin(); m!= table[myHashKey].end();m++){
 		if(m->first==key){
             m->second=m->second-1;
             if(m->second==0){
@@ -56,7 +56,7 @@ bool Hash::Delete(int key){
     return false; //just decreased
 }
 void Hash::insertIt(pair<int,int> newguy, int where){
-    table[where].push_back(newguy);
+    table[where].push_front(newguy);
     //increase count if there if not add to both
 
 }
