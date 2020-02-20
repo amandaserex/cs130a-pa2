@@ -16,7 +16,7 @@ void quash::insert(int key){
 	else{
 		myHashKey = key%43;
 	}
-	if(!myHash.searchAndAdd(myHashKey)){
+	if(!myHash.searchAndAdd(key)){
 		pair<int, int> temp;
 		temp.first=key;
 		temp.second=1; 
@@ -25,7 +25,7 @@ void quash::insert(int key){
 		cout<<"item successfully inserted, count = 1"<<endl;
 	}
 	else{
-		cout<<"item already present, new count = " << myHash.currentCount(myHashKey)<<endl;
+		cout<<"item successfully inserted, count = " << myHash.currentCount(key)<<endl;
 	}
 }
 
@@ -37,11 +37,11 @@ void quash::lookup(int key){
 	else{
 		myHashKey = key%43;
 	}
-	if(myHash.currentCount(myHashKey)==0){
+	if(myHash.currentCount(key)==0){
 		cout<<"item not found"<<endl;
 	}
 	else{
-		cout<<"item found, count = "<<myHash.currentCount(myHashKey)<<endl;
+		cout<<"item found, count = "<<myHash.currentCount(key)<<endl;
 	}
 	//“item found, count = n” or “item not found”
 
