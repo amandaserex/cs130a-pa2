@@ -65,7 +65,7 @@ void quash::deleteMin(){
 
 void quash::Delete(int key){
 	if(myHeap.empty()){
-		cout<<item not present in the table"<<endl;
+		cout<<"item not present in the table"<<endl;
 		return;
 	}
 	//"item count decremented, new count = n” or “item successfully deleted” or “item not present in the table”
